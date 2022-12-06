@@ -126,6 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Manager.cs" />
     <Compile Include="MaterialPage.xaml.cs">
       <DependentUpon>MaterialPage.xaml</DependentUpon>
     </Compile>

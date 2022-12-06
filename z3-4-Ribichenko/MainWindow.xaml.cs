@@ -23,7 +23,8 @@ namespace z3_4_Ribichenko
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new GaragePage());
+            MainFrame.Navigate(new GaragePage()); // открытие начальной страницы
+            Manager.MainFrame = MainFrame;
         }
 
         private void num_TextChanged(object sender, TextChangedEventArgs e)

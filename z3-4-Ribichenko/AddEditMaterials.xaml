@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:z3_4_Ribichenko"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEditMaterials">
+      Title="AddEditMaterials" FontFamily="Comic Sans MS" FontSize="17">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -22,14 +22,18 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Наименование" ></TextBlock>
+        <TextBox x:Name="nameTB" Text="{Binding name}" Grid.Column="1" Width="550" Height="40" HorizontalAlignment="Left" MaxLength="100" VerticalContentAlignment="Center"></TextBox>
+        
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Номер материала" Grid.Row="1"></TextBlock>
+        <TextBox x:Name="numberTB" Text="{Binding number_material}" MaxLength="4" Grid.Column="1" Grid.Row="1" Width="75" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" PreviewTextInput="Onlynum_PreviewTextInput"></TextBox>
+        
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Единица измерения" Grid.Row="2" ></TextBlock>
+        <ComboBox x:Name="comboUnitTB" Text="{Binding units}" DisplayMemberPath="name" Grid.Column="1" Grid.Row="2" Height="40" Width="100" HorizontalAlignment="Left"></ComboBox>
+        
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Остаток на складе" Grid.Row="3" ></TextBlock>
+        <TextBox x:Name="ostatokTB" Text="{Binding ostatok}" MaxLength="10" Grid.Column="1" Grid.Row="3" Width="150" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" PreviewTextInput="Onlynum_PreviewTextInput"></TextBox>
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Номер гаража" Grid.Row="4" ></TextBlock>
-        <TextBox x:Name="Name"   Grid.Column="1" Width="550" Height="40" HorizontalAlignment="Left" MaxLength="100" VerticalContentAlignment="Center"></TextBox>
-        <ComboBox x:Name="comboType"  DisplayMemberPath="name" Grid.Column="1" Grid.Row="1" Height="40" Width="100" HorizontalAlignment="Left"></ComboBox>
-        <TextBox x:Name="type"   MaxLength="15" Grid.Column="1" Grid.Row="2" Width="150" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextChanged="Phone_TextChanged" PreviewTextInput="Ostatok_PreviewTextInput"></TextBox>
-        <TextBox x:Name="Ostatok"  MaxLength="4" Grid.Column="1" Grid.Row="3" Width="75" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" PreviewTextInput="Phone_PreviewTextInput"></TextBox>
+        <ComboBox x:Name="comboNumberTB" Text="{Binding garage}" DisplayMemberPath="number_garage" Grid.Column="1" Grid.Row="4" Height="40" Width="100" HorizontalAlignment="Left"></ComboBox>
 
         <Button x:Name="btnSave" Content="Сохранить" Background="gray" Grid.ColumnSpan="2" Grid.Row="5" Height="60" Width="250" Click="btnSave_Click"></Button>
     </Grid>

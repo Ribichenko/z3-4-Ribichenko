@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:z3_4_Ribichenko"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MaterialPage" FontFamily="Comic Sans MS" FontSize="17">
+      Title="MaterialPage" FontFamily="Comic Sans MS" FontSize="18">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -63,6 +63,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1"></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1">
                             <TextBlock Margin="0 0 0 0" TextAlignment="Left"
@@ -79,17 +80,22 @@
 
                         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="0 0 0 0">
                             <TextBlock Margin="0 0 0 0" Text="Тип материала: "></TextBlock>
-                            <TextBlock Text="{Binding units.name}" Grid.Row="1"  Margin="5 0 0 0" FontSize="18" HorizontalAlignment="Left" Grid.Column="1"></TextBlock>
+                            <TextBlock Text="{Binding units.name}" Grid.Row="1"  Margin="5 0 0 0" HorizontalAlignment="Left" Grid.Column="1"></TextBlock>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Margin="0 0 0 0">
-                            <TextBlock Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" FontSize="18" Grid.Column="1" Text="Остаток на складе: "></TextBlock>
+                            <TextBlock Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" Grid.Column="1" Text="Остаток на складе: "></TextBlock>
                             <TextBlock Text="{Binding ostatok}" Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" FontSize="18" Grid.Column="1"></TextBlock>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" Margin="0 0 0 0">
-                            <TextBlock Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" FontSize="18" Grid.Column="1" Text="№ склада: "></TextBlock>
-                            <TextBlock Text="{Binding id_garage}" Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" FontSize="18" Grid.Column="1"></TextBlock>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Margin="0 0 0 0">
+                            <TextBlock Margin="0 0 0 0" HorizontalAlignment="Left" FontSize="26" FontWeight="Bold" Text="№ склада: "></TextBlock>
+                            <TextBlock Text="{Binding id_garage}" Margin="0 0 0 0"  FontSize="26" FontWeight="Bold" HorizontalAlignment="Left" ></TextBlock>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Margin="0 0 0 0">
+                            <TextBlock Margin="0 0 0 0" HorizontalAlignment="Left" FontWeight="Bold" Text="Адрес склада: "></TextBlock>
+                            
+                        </StackPanel>
+                        <TextBlock Text="{Binding garage.address}" Grid.Row="3" FontWeight="Bold" Margin="0 0 0 0" HorizontalAlignment="Left" Grid.Column="2"></TextBlock>
 
                     </Grid>
 

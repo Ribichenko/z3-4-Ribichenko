@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using z3_4_Ribichenko.AppDataFile;
 
 namespace z3_4_Ribichenko
@@ -24,8 +25,8 @@ namespace z3_4_Ribichenko
         public MaterialPage()
         {
             InitializeComponent();
-            var currentGarage = RibichenkoEntities.GetContext().material.ToList(); 
-            LV.ItemsSource = currentGarage;
+            var currentMaterial = RibichenkoEntities.GetContext().material.ToList(); 
+            LV.ItemsSource = currentMaterial;
         }
 
         private void LV_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -33,18 +34,20 @@ namespace z3_4_Ribichenko
             if (Visibility == Visibility.Visible)
             {
                 RibichenkoEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                LV.ItemsSource = RibichenkoEntities.GetContext().garage.ToList();
+                LV.ItemsSource = RibichenkoEntities.GetContext().material.ToList();
             }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditMaterials());
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+        
     }
 }
