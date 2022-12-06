@@ -1,0 +1,25 @@
+﻿<Window x:Class="z3_4_Ribichenko.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:z3_4_Ribichenko"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="900" FontFamily="Comic Sans MS" FontSize="17">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
+            <TextBlock x:Name="userLabel" Text="Войдите в систему" VerticalAlignment="Center"></TextBlock>
+            <TextBlock VerticalAlignment="Center" Margin="20 0 0 0">Код:</TextBlock>
+            <TextBox x:Name="num" Width="100" Margin="20 0 0 0" Height="30" TextChanged="num_TextChanged"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button  x:Name="btnGarage" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="100" Content="Склад" Click="btnGarage_Click" Margin="0 0 20 0"></Button>
+        <Button  x:Name="btnMaterials" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="110" Content="Материалы" Click="btnMaterials_Click" Margin="0 0 20 0"></Button>
+        </StackPanel>
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        </Grid>
+</Window>

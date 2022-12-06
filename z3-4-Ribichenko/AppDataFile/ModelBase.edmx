@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ModelDataBase" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="garage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number_garage" Type="int" Nullable="false" />
+          <Property Name="address" Type="text" Nullable="false" />
+          <Property Name="id_type_material" Type="int" Nullable="false" />
+          <Property Name="distance" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number_material" Type="int" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+          <Property Name="id_unit" Type="int" Nullable="false" />
+          <Property Name="ostatok" Type="int" Nullable="false" />
+          <Property Name="id_garage" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="type_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="units">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_garage_type_material">
+          <End Role="type_material" Type="Self.type_material" Multiplicity="1" />
+          <End Role="garage" Type="Self.garage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="garage">
+              <PropertyRef Name="id_type_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_garage">
+          <End Role="garage" Type="Self.garage" Multiplicity="1" />
+          <End Role="material" Type="Self.material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="garage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material">
+              <PropertyRef Name="id_garage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_units">
+          <End Role="units" Type="Self.units" Multiplicity="1" />
+          <End Role="material" Type="Self.material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="units">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material">
+              <PropertyRef Name="id_unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelDataBaseContainer">
+          <EntitySet Name="garage" EntityType="Self.garage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="material" EntityType="Self.material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_material" EntityType="Self.type_material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="units" EntityType="Self.units" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_garage_type_material" Association="Self.FK_garage_type_material">
+            <End Role="type_material" EntitySet="type_material" />
+            <End Role="garage" EntitySet="garage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_garage" Association="Self.FK_material_garage">
+            <End Role="garage" EntitySet="garage" />
+            <End Role="material" EntitySet="material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_units" Association="Self.FK_material_units">
+            <End Role="units" EntitySet="units" />
+            <End Role="material" EntitySet="material" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelDataBase" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="garage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number_garage" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_type_material" Type="Int32" Nullable="false" />
+          <Property Name="distance" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="type_material" Relationship="Self.FK_garage_type_material" FromRole="garage" ToRole="type_material" />
+          <NavigationProperty Name="material" Relationship="Self.FK_material_garage" FromRole="garage" ToRole="material" />
+        </EntityType>
+        <EntityType Name="material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number_material" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_unit" Type="Int32" Nullable="false" />
+          <Property Name="ostatok" Type="Int32" Nullable="false" />
+          <Property Name="id_garage" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="garage" Relationship="Self.FK_material_garage" FromRole="material" ToRole="garage" />
+          <NavigationProperty Name="units" Relationship="Self.FK_material_units" FromRole="material" ToRole="units" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="type_material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="garage" Relationship="Self.FK_garage_type_material" FromRole="type_material" ToRole="garage" />
+        </EntityType>
+        <EntityType Name="units">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="material" Relationship="Self.FK_material_units" FromRole="units" ToRole="material" />
+        </EntityType>
+        <Association Name="FK_garage_type_material">
+          <End Role="type_material" Type="Self.type_material" Multiplicity="1" />
+          <End Role="garage" Type="Self.garage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="garage">
+              <PropertyRef Name="id_type_material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_garage">
+          <End Role="garage" Type="Self.garage" Multiplicity="1" />
+          <End Role="material" Type="Self.material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="garage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material">
+              <PropertyRef Name="id_garage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_material_units">
+          <End Role="units" Type="Self.units" Multiplicity="1" />
+          <End Role="material" Type="Self.material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="units">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="material">
+              <PropertyRef Name="id_unit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RibichenkoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="garage" EntityType="Self.garage" />
+          <EntitySet Name="material" EntityType="Self.material" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="type_material" EntityType="Self.type_material" />
+          <EntitySet Name="units" EntityType="Self.units" />
+          <AssociationSet Name="FK_garage_type_material" Association="Self.FK_garage_type_material">
+            <End Role="type_material" EntitySet="type_material" />
+            <End Role="garage" EntitySet="garage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_garage" Association="Self.FK_material_garage">
+            <End Role="garage" EntitySet="garage" />
+            <End Role="material" EntitySet="material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_material_units" Association="Self.FK_material_units">
+            <End Role="units" EntitySet="units" />
+            <End Role="material" EntitySet="material" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelDataBaseContainer" CdmEntityContainer="RibichenkoEntities">
+          <EntitySetMapping Name="garage">
+            <EntityTypeMapping TypeName="ModelDataBase.garage">
+              <MappingFragment StoreEntitySet="garage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number_garage" ColumnName="number_garage" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="id_type_material" ColumnName="id_type_material" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="material">
+            <EntityTypeMapping TypeName="ModelDataBase.material">
+              <MappingFragment StoreEntitySet="material">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number_material" ColumnName="number_material" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_unit" ColumnName="id_unit" />
+                <ScalarProperty Name="ostatok" ColumnName="ostatok" />
+                <ScalarProperty Name="id_garage" ColumnName="id_garage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ModelDataBase.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_material">
+            <EntityTypeMapping TypeName="ModelDataBase.type_material">
+              <MappingFragment StoreEntitySet="type_material">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="units">
+            <EntityTypeMapping TypeName="ModelDataBase.units">
+              <MappingFragment StoreEntitySet="units">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

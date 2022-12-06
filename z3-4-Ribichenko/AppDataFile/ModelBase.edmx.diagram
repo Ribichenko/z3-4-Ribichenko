@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f44710a06744fb8aa2de8de6f2b9935" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ModelDataBase.garage" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDataBase.material" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDataBase.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDataBase.type_material" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelDataBase.units" Width="1.5" PointX="3.125" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="ModelDataBase.FK_garage_type_material" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDataBase.FK_material_garage" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelDataBase.FK_material_units" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
