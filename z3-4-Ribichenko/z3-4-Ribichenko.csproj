@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEditGarages.xaml.cs">
+      <DependentUpon>AddEditGarages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddEditMaterials.xaml.cs">
       <DependentUpon>AddEditMaterials.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
     <Compile Include="AppDataFile\units.cs">
       <DependentUpon>ModelBase.tt</DependentUpon>
     </Compile>
+    <Page Include="AddEditGarages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddEditMaterials.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

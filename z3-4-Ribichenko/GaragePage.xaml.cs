@@ -46,7 +46,7 @@ namespace z3_4_Ribichenko
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditGarages());
         }
 
         private void btnDel_Click(object sender, RoutedEventArgs e)

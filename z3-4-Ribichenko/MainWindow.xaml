@@ -12,7 +12,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="LightGray" Orientation="Horizontal">
-            <TextBlock x:Name="userLabel" Text="Войдите в систему" VerticalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="userLabel" Foreground="Red" Text="Войдите в систему" VerticalAlignment="Center"></TextBlock>
             <TextBlock VerticalAlignment="Center" Margin="20 0 0 0">Код:</TextBlock>
             <TextBox x:Name="num" Width="100" Margin="20 0 0 0" Height="30" TextChanged="num_TextChanged"></TextBox>
         </StackPanel>
